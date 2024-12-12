@@ -35,4 +35,3 @@ Feel free to fork the project, submit issues, or create pull requests.
 ## License
 This project is licensed under the MIT License.
 ```csharp
-You can copy and paste this directly into your `README.md` file on GitHub.
