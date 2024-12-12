@@ -1,7 +1,7 @@
 # MusicGenerator
 
 ## Overview
-MusicGenerator is a project designed to generate music using LSTM (Long Short-Term Memory) neural networks. The model is trained on a dataset of musical pieces and generates new compositions based on the learned patterns. The project is deployed using Streamlit and can be accessed via the following link: [Project Dashboard]([https://musicgenerator.streamlit.app/]).
+MusicGenerator is a project designed to generate music using LSTM (Long Short-Term Memory) neural networks. The model is trained on a dataset of musical pieces and generates new compositions based on the learned patterns. The project is deployed using Streamlit and can be accessed via the following link: [Project Dashboard](https://musicgenerator.streamlit.app/).
 
 ## Features
 - LSTM-based music generation
