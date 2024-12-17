@@ -17,18 +17,17 @@ with open(pitchnames_path, 'rb') as f:
 with open(net_input_path, 'rb') as f:
     net_input = pickle.load(f)
 
-def model_builder():
-    model = Sequential()
-    model.add(LSTM(256, input_shape=(net_input.shape[1], net_input.shape[2]),return_sequences=True))
-    model.add(LSTM(512, return_sequences=True))
-    model.add(LSTM(256, return_sequences=False))
-    model.add(Dense(256, activation='relu'))
-    model.add(Dense(194))
-    model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics = ['accuracy'])
-    model.load_weights('weights.weights.h5')
-    #model.summary()
-    return model
+
+model = Sequential()
+model.add(LSTM(256, input_shape=(net_input.shape[1], net_input.shape[2]),return_sequences=True))
+model.add(LSTM(512, return_sequences=True))
+model.add(LSTM(256, return_sequences=False))
+model.add(Dense(256, activation='relu'))
+model.add(Dense(194))
+model.add(Activation('softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics = ['accuracy'])
+model.load_weights('weights.weights.h5')
+#model.summary()
 
 
 def predict():
@@ -43,8 +42,6 @@ def predict():
     for note_index in range(500):
         prediction_input = np.reshape(pattern, (1, len(pattern), 1))
         prediction_input = prediction_input / float(194)
-
-        model = model_builder()
         prediction = model.predict(prediction_input, verbose=0)
         
         index = np.argmax(prediction)
