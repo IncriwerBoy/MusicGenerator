@@ -29,12 +29,15 @@ def generate_music():
 def play_midi(file_path):
     try:
         pygame.init()
+        if not pygame.mixer.get_init():
+            pygame.mixer.init()
+        
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.play()
 
         while pygame.mixer.music.get_busy():
             pygame.time.Clock().tick(10)
-        pygame.quit()
+        st.success('Music is playing!')
     except Exception as e:
         st.error(f"An error occurred while playing the MIDI file: {e}")
         logging.error(f"An error occurred while playing the MIDI file: {e}")
@@ -42,6 +45,7 @@ def play_midi(file_path):
 def stop_midi():
     try:
         pygame.mixer.music.stop()
+        pygame.quit()
         st.success('Music stopped successfully!')
     except Exception as e:
         st.error(f"An error occurred while stopping the MIDI file: {e}")
